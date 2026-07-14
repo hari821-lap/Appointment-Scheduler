@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Scheduler</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+       
+        <header class="navbar">
+            <a class="brand" href="#">
+                <img src="assets/brand logo.svg" alt="CAPMINDS logo">
+                <span class="brand-name">CAPMINDS</span>
+            </a>
+
+            <button id="bookBtn">
+                + Book Appointment
+            </button>
+        </header>
+
+        <div class="content-wrapper">
+
+           
+            <aside class="sidebar" id="sidebar">
+
+                <ul class="menu">
+
+                    <button id="sidebarToggle" class="menu-btn" aria-label="Toggle sidebar">
+                        <img class="menu-icon" alt="Collapse sidebar">
+                    </button>
+
+                    <li id="calendarMenu" class="active">
+                        <img class="menu-icon" src="assets/material-symbols_calendar-today-outline.svg" alt="Calendar">
+                        <span class="menu-text">Calendar</span>
+                    </li>
+
+                    <li id="dashboardMenu">
+                        <img class="menu-icon" src="assets/material-symbols_dashboard-outline-rounded.svg"
+                            alt="Dashboard">
+                        <span class="menu-text">Dashboard</span>
+                    </li>
+
+                </ul>
+
+            </aside>
+
+            <!-- Resize Handle -->
+            <div class="resizer" id="sidebarResizer"></div>
+
+            <!-- Main -->
+            <main class="main-content">
+
+
+
+                <!-- Calendar -->
+
+                <section id="calendarSection" class="calendar-section">
+
+                    <header class="calendar-controls">
+
+                        <div class="nav-buttons">
+                            <button id="prevMonth">◀</button>
+                            <div style="border: 2px solid block !important;">
+                                <h3 id="currentMonth"></h3>
+                            </div>
+                            <button id="nextMonth">▶</button>
+                            <button id="todayBtn">Today</button>
+                        </div>
+
+                        <div class="view-select">
+                            <label for="viewMode">View</label>
+                            <select id="viewMode">
+                                <option value="day">Day</option>
+                                <option value="month">Month</option>
+
+                            </select>
+                        </div>
+
+                    </header>
+
+                    <div class="calendar-title">
+                        <h2> hari</h2>
+                    </div>
+
+                    <div class="weekdays">
+
+                        <div>Sunday</div>
+                        <div>Monday</div>
+                        <div>Tuesday</div>
+                        <div>Wednesday</div>
+                        <div>Thursday</div>
+                        <div style="color:rgb(124, 124, 212);">Friday</div>
+                        <div>Saturday</div>
+
+                    </div>
+
+                    <div id="calendar" class="calendar-grid">
+
+                        <!-- JavaScript Creates Days -->
+
+                    </div>
+
+                </section>
+
+
+                <!-- Dashboard -->
+
+                <section id="dashboardSection" class="dashboard hidden">
+
+                    <h2>Practice Dashboard</h2>
+
+                    <div class="filters">
+
+                        <input type="text" id="patientSearch" placeholder="Search Patient">
+
+                        <input type="text" id="doctorSearch" placeholder="Search Doctor">
+
+                        <input type="date" id="fromDate">
+
+                        <input type="date" id="toDate">
+
+                        <button id="filterBtn">
+                            Update
+                        </button>
+
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+
+                            <thead>
+
+                                <tr class="table-title-row">
+                                    <th colspan="7">Appiontment Details </th>
+
+                                </tr>
+
+                                <tr>
+
+                                    <th>Patient</th>
+                                    <th>Doctor</th>
+                                    <th>Hospital</th>
+                                    <th>Specialty</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+
+                                    <th>Action</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="appointmentTable">
+
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+
+        <!-- ===========================
+      Appointment Modal
+============================ -->
+
+        <div class="modal" id="appointmentModal">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h2>Schedule Appointment</h2>
+
+                    <span id="closeModal" class="close">
+
+                        &times;
+
+                    </span>
+
+                </div>
+
+                <form id="appointmentForm">
+
+                    <div class="row">
+
+                        <div class="form-group">
+
+                            <label><img src="assets/Frame (1).svg" alt="Patient"></label>
+
+                            <select id="patientName" required>
+                                <option value="" disabled selected> Patient Name</option>
+                                <option value="Hari Sharma">Hari Sharma</option>
+                                <option value="Asha Patel">Asha Patel</option>
+                                <option value="Ravi Kumar">Ravi Kumar</option>
+                                <option value="Mira Das">Mira Das</option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label><img src="assets/fontisto_doctor.svg" alt="Doctor"></label>
+
+                            <select id="doctorName" required>
+                                <option value="" disabled selected>Doctor Name</option>
+                                <option value="Dr. Meera Singh">Dr. Meera Singh</option>
+                                <option value="Dr. Anil Verma">Dr. Anil Verma</option>
+                                <option value="Dr. Sonal Rao">Dr. Sonal Rao</option>
+                                <option value="Dr. Nikhil Joshi">Dr. Nikhil Joshi</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="form-group">
+
+                            <label><img src="assets/Location pin.svg" alt="Hospital"></label>
+
+                            <select id="hospitalName" required>
+                                <option value="" disabled selected>hospital Name</option>
+                                <option value="City Care Hospital">City Care Hospital</option>
+                                <option value="Green Valley Clinic">Green Valley Clinic</option>
+                                <option value="Sunrise Medical Center">Sunrise Medical Center</option>
+                                <option value="Healing Hands Hospital">Healing Hands Hospital</option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label><img src="assets/Frame.svg" alt="Specialty"></label>
+
+                            <select id="specialty" required>
+                                <option value="" disabled selected>Specialty</option>
+                                <option value="Cardiology">Cardiology</option>
+                                <option value="Dermatology">Dermatology</option>
+                                <option value="Orthopedics">Orthopedics</option>
+                                <option value="Pediatrics">Pediatrics</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="form-group">
+
+                            <label><img src="assets/material-symbols_calendar-today-outline.svg" alt="Date"></label>
+
+                            <input type="text" id="appointmentDate" placeholder="Select Date" onfocus="this.type='date'"
+                                onblur="if(!this.value) this.type='text'" name="appointmentDate"
+                                required>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label><img src="assets/Access time.svg" alt="Time"></label>
+
+                            <input type="text" id="appointmentTime" placeholder="Select Time" onfocus="this.type='time'"
+                                onblur="if(!this.value) this.type='text'" name="appointmentTime" required>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group full-width">
+
+                        <label>Reason</label>
+
+                        <input id="reason" required></input>
+
+                    </div>
+
+                    <div class="modal-buttons">
+
+                        <button type="button" id="cancelBtn">
+
+                            Cancel
+
+                        </button>
+
+                        <button type="submit">
+
+                            Save
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <!-- JavaScript -->
+
+        <script src="js/storage.js"></script>
+        <script src="js/modal.js"></script>
+        <script src="js/calendar.js"></script>
+        <script src="js/filter.js"></script>
+        <script src="js/app.js"></script>
+
+</body>
+
+</html>
