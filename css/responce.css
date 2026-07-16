@@ -118,6 +118,7 @@
     .calendar-controls h3 {
         width: 100%;
         text-align: center;
+        border
     }
 
     .weekdays {
@@ -126,11 +127,11 @@
 
     .day {
         min-height: 80px;
-        padding: 5px;
+
     }
 
     .day-number {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .event {
@@ -177,6 +178,11 @@
 
     .logo h2 {
         font-size: 22px;
+        padding: 7px -19px;
+    }
+
+    * {
+        padding: 4px;
     }
 
     .main-content {
@@ -185,7 +191,9 @@
 
     .calendar-section,
     .dashboard {
-        padding: 15px;
+        padding: 11px;
+        margin-left: -5px;
+        margin-top: -17px;
     }
 
     .weekdays {
@@ -201,7 +209,7 @@
     }
 
     .event {
-        font-size: 9px;
+        font-size: 5px;
     }
 
     .modal-header h2 {

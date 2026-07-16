@@ -2,6 +2,8 @@
 // app.js
 // ==============================
 
+
+
 document.addEventListener("DOMContentLoaded", () => {
     renderCalendar();
     renderAppointments();
@@ -67,15 +69,30 @@ function initSidebarResize() {
     updateToggleIcon();
 
     toggleBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("collapsed");
-        if (sidebar.classList.contains("collapsed")) {
-            sidebar.style.width = "70px";
-            contentWrapper?.classList.add("sidebar-collapsed");
-        } else {
-            sidebar.style.width = "240px";
-            contentWrapper?.classList.remove("sidebar-collapsed");
-        }
-        updateToggleIcon();
+        // Mobile
+    if (window.innerWidth <= 768) {
+
+        sidebar.classList.toggle("active");
+        return;
+
+    }
+
+    // Desktop
+    sidebar.classList.toggle("collapsed");
+
+    if (sidebar.classList.contains("collapsed")) {
+
+        sidebar.style.width = "70px";
+        contentWrapper?.classList.add("sidebar-collapsed");
+
+    } else {
+
+        sidebar.style.width = "240px";
+        contentWrapper?.classList.remove("sidebar-collapsed");
+
+    }
+
+    updateToggleIcon();
     });
 
     resizer.addEventListener("mousedown", (e) => {
