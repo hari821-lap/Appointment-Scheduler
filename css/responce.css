@@ -34,7 +34,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 15px 20px;
+        padding: 0px 0px;
     }
 
     .logo {
@@ -75,6 +75,7 @@
 
     .row {
         flex-direction: column;
+        margin-bottom: -11px;
     }
 
 }
@@ -89,6 +90,11 @@
     .sidebar {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .thv,
+    td {
+        padding: -2px 0px;
     }
 
     .menu {
@@ -118,7 +124,7 @@
     .calendar-controls h3 {
         width: 100%;
         text-align: center;
-        border
+
     }
 
     .weekdays {
@@ -181,6 +187,12 @@
         padding: 7px -19px;
     }
 
+    .thv,
+    td {
+        padding: -2px 0px;
+    }
+
+
     * {
         padding: 4px;
     }
@@ -219,6 +231,14 @@
     .form-group input,
     .form-group textarea {
         font-size: 14px;
+    }
+
+}
+
+@media (max-width:768px) {
+
+    #sidebarToggle {
+        display: none;
     }
 
 }
