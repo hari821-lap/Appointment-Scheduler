@@ -171,7 +171,7 @@
 
     .modal-buttons button {
         width: 100%;
-    }
+    } .calendar-title{padding: 3px 0;}
 
 }
 
@@ -189,7 +189,7 @@
 
     .thv,
     td {
-        padding: -2px 0px;
+        padding: 0px 0px;
     }
 
 
@@ -209,7 +209,7 @@
     }
 
     .weekdays {
-        font-size: 11px;
+        font-size: 8px;
     }
 
     .day {

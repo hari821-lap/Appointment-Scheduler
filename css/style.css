@@ -845,7 +845,7 @@ body {
     }
 
     .menu li {
-        padding: 10px;
+        padding: 0px;
         margin-bottom: 0;
         flex-direction: column;
         gap: 5px;
@@ -877,7 +877,7 @@ body {
         position: static;
         transform: none;
         width: 100%;
-        max-width: 220px;
+              max-width: 156px;
     }
 
    
@@ -997,6 +997,6 @@ body {
     }
 
     .menu li {
-        padding: 8px;
+        padding: 0px;
     }
 }
